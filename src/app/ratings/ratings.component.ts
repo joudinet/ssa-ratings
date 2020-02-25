@@ -18,8 +18,10 @@ export class RatingsComponent implements OnInit {
     ngOnInit(): void {
 	this.route.url.subscribe(url => {
 	    if (url.length > 0 && url[0].path === "f") {
-		this.games = this.gamesService.getFemGames();
 		this.ratings = this.gamesService.getFemRatings();
+		this.gamesService.getFemGames().subscribe(games => {
+		    this.games = Array.prototype.reverse.call(games);
+		});
 	    }
 	    else {
 		this.ratings = this.gamesService.getRatings();
