@@ -1,0 +1,50 @@
+<section class="ratings">
+  <div class="ranking">
+    <h2>Classement</h2>
+    <table class="game">
+      <thead>
+	<tr>
+	  <th>Rang</th>
+	  <th>Nom</th>
+	  <th>Score</th>
+	  <th>#matchs</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr class="rank" *ngFor="let team of ratings | async; index as teamId">
+	  <td>{{ team.rank }}</td>
+	  <td><a [title]="team.name + ' details'"
+		 [routerLink]="['team', teamId]">{{ team.name | uppercase}}</a>
+	  </td>
+	  <td>{{ team.elo }}</td>
+	  <td>{{ team.games }}</td>
+	</tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="results">
+    <h2>Derniers résultats</h2>
+    <table class="game">
+      <thead>
+	<tr>
+	  <th>Date</th>
+	  <th>Équipe A</th>
+	  <th>Équipe B</th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr class="game" *ngFor="let game of games | slice:0:41">
+	  <td>{{ game.day }}</td>
+	  <td>
+	    <span [ngClass]="game.win? 'win' : 'lost'">{{ game.teamA }}</span>
+	    <!-- <strong *ngIf="game.win; else lost">{{ game.teamA }}</strong> -->
+	    <!-- <ng-template #lost>{{ game.teamA }}</ng-template> -->
+	  </td>
+	  <td>
+	    <span [ngClass]="!game.win? 'win' : 'lost'">{{ game.teamB }}</span>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+.ratings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.ratings > * {
+    flex: 1 1 350px;
+}
+
+.ranking {
+    width:45%;
+}
+
+.results {
+    width:40%;
+}
+
+table {
+    table-layout: fixed;
+    width: 90%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ranking thead th:nth-child(1),
+.ranking thead th:nth-child(3) {
+    width: 10%;
+}
+
+.ranking thead th:nth-child(4) {
+    width: 20%;
+}
+
+.results thead th:nth-child(1) {
+    width: 20%;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    letter-spacing: 2px;
+}
+
+td {
+    letter-spacing: 1px;
+}
+
+h2, tbody td {
+    text-align: center;
+}
+
+thead {
+    background-color: grey;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgb(200, 200, 200, .3);
+}
+
+.win {
+    font-weight: bold;
+}
