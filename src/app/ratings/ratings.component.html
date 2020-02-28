@@ -6,8 +6,14 @@
 	<tr>
 	  <th>Rang</th>
 	  <th>Nom</th>
-	  <th>Score</th>
-	  <th>#matchs</th>
+	  <th>
+	    <span class="short-text">SCO</span>
+	    <span class="long-text">Score</span>
+	  </th>
+	  <th>
+	    <span class="short-text">M.</span>
+	    <span class="long-text">Matchs</span>
+	  </th>
 	</tr>
       </thead>
       <tbody>
@@ -34,7 +40,10 @@
       </thead>
       <tbody>
 	<tr class="game" *ngFor="let game of games | slice:0:41">
-	  <td>{{ game.day }}</td>
+	  <td>
+	    <span class="short-text">{{ game.day | date:"d/M/yy" }}</span>
+	    <span class="long-text">{{ game.day }}</span>
+	  </td>
 	  <td>
 	    <span [ngClass]="game.win? 'win' : 'lost'">{{ game.teamA }}</span>
 	    <!-- <strong *ngIf="game.win; else lost">{{ game.teamA }}</strong> -->

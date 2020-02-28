@@ -2,10 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-left: 4px; /* + 8px from default body margins */
+    margin-right: 4px; /* + 8px from default body margins */
 }
 
 .ratings > * {
-    flex: 1 1 350px;
+    flex: 1 1 273px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .ranking {
@@ -18,7 +22,7 @@
 
 table {
     table-layout: fixed;
-    width: 90%;
+    width: 100%;
     border-collapse: collapse;
     border: 1px solid black;
     margin-left: auto;
@@ -66,4 +70,37 @@ tbody tr:nth-child(odd) {
 
 .win {
     font-weight: bold;
+}
+
+.short-text {
+    display: none;
+}
+
+/* small size */
+@media screen and (max-width: 959px) {
+    .ratings {
+	margin-left: 0;
+	margin-right: 0;
+    }
+
+    .ratings > * {
+	margin-left: 8px;
+	margin-right: 8px;
+    }
+}
+
+
+/* xsmall size */
+@media screen and (max-width: 599px) {
+    .ratings > * {
+	margin-left: 4px;
+	margin-right: 4px;
+    }
+
+    .short-text {
+	display: inline;
+    }
+    .long-text {
+	display: none;
+    }
 }

@@ -1,4 +1,4 @@
-<section *ngIf="team">
+<section class="team" *ngIf="team">
   <h2>{{team.name}}</h2>
   <google-chart [data]="lineChart"></google-chart>
   <p>Nombre de parties jouées : <strong>{{ team.results.length }}</strong></p>
@@ -6,14 +6,23 @@
     <thead>
       <tr>
 	<th>Date</th>
-	<th>Résultat</th>
+	<th>
+	  <span class="short-text">Rés.</span>
+	  <span class="long-text">Résultat</span>
+	</th>
 	<th>Adversaire</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let result of team.results">
-	<td>{{ result.date }}</td>
-	<td [ngClass]="result.win? 'win' : 'loss'">{{ result.win? "Victoire" : "Défaite" }}</td>
+	<td>
+	  <span class="short-text">{{ result.date | date:"d/M/yy" }}</span>
+	  <span class="long-text">{{ result.date }}</span>
+	</td>
+	<td [ngClass]="result.win? 'win' : 'loss'">
+	  <span class="short-text">{{ result.win? "Vict." : "Déf." }}</span>
+	  <span class="long-text">{{ result.win? "Victoire" : "Défaite" }}</span>
+	</td>
 	<td>{{ result.versus }}</td>
       </tr>
     </tbody>
