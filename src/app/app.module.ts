@@ -13,13 +13,15 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { RatingsComponent } from './ratings/ratings.component';
 import { TeamComponent } from './team/team.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     RatingsComponent,
-    TeamComponent
+    TeamComponent,
+    AboutComponent
   ],
   imports: [
       BrowserModule,
