@@ -41,8 +41,7 @@
       <tbody>
 	<tr class="game" *ngFor="let game of games | slice:0:41">
 	  <td>
-	    <span class="short-text">{{ game.day | date:"d/M/yy" }}</span>
-	    <span class="long-text">{{ game.day }}</span>
+	    {{ game.day | date:"d/M/yy" }}
 	  </td>
 	  <td>
 	    <span [ngClass]="game.win? 'win' : 'lost'">{{ game.teamA }}</span>

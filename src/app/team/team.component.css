@@ -17,11 +17,13 @@ thead th:nth-child(1) {
 }
 
 thead th:nth-child(2) {
-    width: 10%;
+    width: 15%;
 }
 
 th, td {
     padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 th {
@@ -65,8 +67,8 @@ tbody tr:nth-child(odd) {
 /* xsmall size */
 @media screen and (max-width: 599px) {
     .team {
-	margin-left: 0; /* + 8px from default body margins */
-	margin-right: 0; /* + 8px from default body margins */
+	margin-left: 8px; /* + 0px from default body margins */
+	margin-right: 8px; /* + 0px from default body margins */
     }
 
     .short-text {
