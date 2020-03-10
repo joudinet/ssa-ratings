@@ -29,18 +29,22 @@ table {
     margin-right: auto;
 }
 
-.ranking thead th:nth-child(1),
-.ranking thead th:nth-child(3),
+/* ranking table column size */
 .ranking thead th:nth-child(4) {
     width: 10%;
 }
 
+.ranking thead th:nth-child(1),
+.ranking thead th:nth-child(3) {
+    width: 15%;
+}
+
 .results thead th:nth-child(1) {
-    width: 20%;
+    width: 24%;
 }
 
 th, td {
-    padding: 10px;
+    padding: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -52,6 +56,12 @@ th {
 td {
     letter-spacing: 1px;
 }
+
+/* no letter-spacing on dates */
+.results td:first-child {
+    letter-spacing: unset;
+}
+
 
 h2, tbody td {
     text-align: center;
@@ -65,6 +75,11 @@ thead {
 
 tbody tr:nth-child(odd) {
     background-color: rgb(200, 200, 200, .3);
+}
+
+.ranking tbody td:nth-child(3),
+.ranking tbody td:last-child {
+    text-align: right;
 }
 
 .win {
@@ -85,6 +100,9 @@ tbody tr:nth-child(odd) {
     .ratings > * {
 	margin-left: 8px;
 	margin-right: 8px;
+    }
+    th, td {
+    	padding: 4px;
     }
 }
 
