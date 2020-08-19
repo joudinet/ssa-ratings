@@ -7,9 +7,11 @@ import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
     { path: 'f/team/:teamId', component: TeamComponent },
+    { path: 'x/team/:teamId', component: TeamComponent },
     { path: 'team/:teamId', component: TeamComponent },
     { path: 'about', component: AboutComponent },
     { path: 'f', component: RatingsComponent },
+    { path: 'x', component: RatingsComponent },
     { path: '', component: RatingsComponent }
 ];
 

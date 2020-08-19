@@ -23,6 +23,12 @@ export class RatingsComponent implements OnInit {
 		    this.games = Array.prototype.reverse.call(games);
 		});
 	    }
+	    else if (url.length > 0 && url[0].path === "x") {
+		this.ratings = this.gamesService.getMixRatings();
+		this.gamesService.getMixGames().subscribe(games => {
+		    this.games = Array.prototype.reverse.call(games);
+		});
+	    }
 	    else {
 		this.ratings = this.gamesService.getRatings();
 		this.gamesService.getGames().subscribe(games => {

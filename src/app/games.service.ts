@@ -11,6 +11,9 @@ export class GamesService {
     femGamesUrl = 'assets/fem_games.json';
     femRatingsUrl = 'assets/fem_ratings.json';
     femTeamsUrl = 'assets/fem_teams.json';
+    mixGamesUrl = 'assets/mix_games.json';
+    mixRatingsUrl = 'assets/mix_ratings.json';
+    mixTeamsUrl = 'assets/mix_teams.json';
 
     constructor(private http: HttpClient) { }
 
@@ -36,5 +39,17 @@ export class GamesService {
 
     getFemTeams() {
 	return this.http.get(this.femTeamsUrl);
+    }
+
+    getMixGames() {
+	return this.http.get(this.mixGamesUrl);
+    }
+
+    getMixRatings() {
+	return this.http.get(this.mixRatingsUrl);
+    }
+
+    getMixTeams() {
+	return this.http.get(this.mixTeamsUrl);
     }
 }

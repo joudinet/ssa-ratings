@@ -17,7 +17,8 @@
 	</tr>
       </thead>
       <tbody>
-	<tr class="rank" *ngFor="let team of ratings | async; index as teamId">
+	<tr *ngFor="let team of ratings | async; index as teamId"
+	    [ngClass]="team.games > 7? 'reliable' : 'uncertain'">
 	  <td>{{ team.rank }}</td>
 	  <td><a [title]="team.name + ' details'"
 		 [routerLink]="['team', teamId]">{{ team.name | uppercase}}</a>

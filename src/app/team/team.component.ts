@@ -35,6 +35,17 @@ export class TeamComponent implements OnInit {
 		this.gamesService.getFemTeams().subscribe(teams => {
 		    this.route.paramMap.subscribe(params => {
 			this.team = teams[+params.get('teamId')];
+			this.team.results.reverse();
+			let withoutIncertity = this.team.ratings.map(val => val.slice(0,-1));
+			this.lineChart.dataTable = [[ 'Date', 'Score']].concat(withoutIncertity);
+		    });
+		});
+	    }
+	    else if (url.length > 0 && url[0].path === "x") {
+		this.gamesService.getFemTeams().subscribe(teams => {
+		    this.route.paramMap.subscribe(params => {
+			this.team = teams[+params.get('teamId')];
+			this.team.results.reverse();
 			let withoutIncertity = this.team.ratings.map(val => val.slice(0,-1));
 			this.lineChart.dataTable = [[ 'Date', 'Score']].concat(withoutIncertity);
 		    });
@@ -44,6 +55,7 @@ export class TeamComponent implements OnInit {
 		this.gamesService.getTeams().subscribe(teams => {
 		    this.route.paramMap.subscribe(params => {
 			this.team = teams[+params.get('teamId')];
+			this.team.results.reverse();
 			let withoutIncertity = this.team.ratings.map(val => val.slice(0,-1));
 			this.lineChart.dataTable = [[ 'Date', 'Score']].concat(withoutIncertity);
 		    });

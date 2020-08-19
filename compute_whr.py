@@ -89,6 +89,15 @@ if __name__ == "__main__":
         add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
     save_ratings(whr, games, 'src/assets/fem_ratings.json')
     save_teams(whr, games, 'src/assets/fem_teams.json')
+    # Mixte
+    whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
+    with open('src/assets/mix_games.json') as f:
+        games = json.load(f)
+        first_day = games[0]['day']
+    for game in games:
+        add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
+    save_ratings(whr, games, 'src/assets/mix_ratings.json')
+    save_teams(whr, games, 'src/assets/mix_teams.json')
 
 
 # whr.probability_future_match("HELENE / MIGUEL", "ALEXANDRA / VINCENT")

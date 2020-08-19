@@ -82,6 +82,13 @@ tbody tr:nth-child(odd) {
     text-align: right;
 }
 
+tr.uncertain {
+    font-style: italic;
+    font-weight: lighter;
+    opacity: 0.5;
+    color: orange;
+}
+
 .win {
     font-weight: bold;
 }
