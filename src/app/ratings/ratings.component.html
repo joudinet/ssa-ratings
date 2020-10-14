@@ -1,6 +1,8 @@
 <section class="ratings">
   <div class="ranking">
     <h2>Classement</h2>
+    <input type="checkbox" id="showUnreliable" name="showUnreliable"/>
+    <label for="showUnreliable">Afficher classements incertains</label>
     <table class="game">
       <thead>
 	<tr>
@@ -18,7 +20,7 @@
       </thead>
       <tbody>
 	<tr *ngFor="let team of ratings | async; index as teamId"
-	    [ngClass]="team.games > 7? 'reliable' : 'uncertain'">
+	    [ngClass]="team.games > 9? 'reliable' : 'uncertain'">
 	  <td>{{ team.rank }}</td>
 	  <td><a [title]="team.name + ' details'"
 		 [routerLink]="['team', teamId]">{{ team.name | uppercase}}</a>

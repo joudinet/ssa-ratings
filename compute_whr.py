@@ -75,20 +75,22 @@ if __name__ == "__main__":
     whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
     with open('src/assets/games.json') as f:
         games = json.load(f)
-        first_day = games[0]['day']
-    for game in games:
-        add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
-    save_ratings(whr, games, 'src/assets/ratings.json')
-    save_teams(whr, games, 'src/assets/teams.json')
+        if len(games) >= 1:
+            first_day = games[0]['day']
+            for game in games:
+                add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
+                save_ratings(whr, games, 'src/assets/ratings.json')
+                save_teams(whr, games, 'src/assets/teams.json')
     # Feminin
     whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
     with open('src/assets/fem_games.json') as f:
         games = json.load(f)
-        first_day = games[0]['day']
-    for game in games:
-        add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
-    save_ratings(whr, games, 'src/assets/fem_ratings.json')
-    save_teams(whr, games, 'src/assets/fem_teams.json')
+        if len(games) >= 1:
+            first_day = games[0]['day']
+            for game in games:
+                add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
+                save_ratings(whr, games, 'src/assets/fem_ratings.json')
+                save_teams(whr, games, 'src/assets/fem_teams.json')
     # Mixte
     whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
     with open('src/assets/mix_games.json') as f:

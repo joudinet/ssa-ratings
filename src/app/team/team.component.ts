@@ -42,7 +42,7 @@ export class TeamComponent implements OnInit {
 		});
 	    }
 	    else if (url.length > 0 && url[0].path === "x") {
-		this.gamesService.getFemTeams().subscribe(teams => {
+		this.gamesService.getMixTeams().subscribe(teams => {
 		    this.route.paramMap.subscribe(params => {
 			this.team = teams[+params.get('teamId')];
 			this.team.results.reverse();
