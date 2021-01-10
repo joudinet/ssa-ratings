@@ -1,0 +1,33 @@
+#about {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin-left: 4px; /* + 8px from default body margins */
+    margin-right: 4px; /* + 8px from default body margins */
+}
+
+#about > * {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+/* small size */
+@media screen and (max-width: 959px) {
+    #about {
+	margin-left: 0;
+	margin-right: 0;
+    }
+
+    #about > * {
+	margin-left: 8px;
+	margin-right: 8px;
+    }
+}
+
+
+/* xsmall size */
+@media screen and (max-width: 599px) {
+    #about > * {
+	margin-left: 4px;
+	margin-right: 4px;
+    }
+}

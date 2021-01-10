@@ -1,0 +1,73 @@
+<div id="about">
+  <h2>À propos de ce classement</h2>
+
+  <p>Le classement affiché sur ce site utilise
+    l'algorithme <a href="https://www.remi-coulom.fr/WHR/">Whole-History
+    Rating (WHR)</a> pour calculer le classement de chaque équipe qui
+    explique le mieux l'ensemble des résultats obtenus.</p>
+
+  <p>À chaque équipe est associée un <strong>score</strong> qui permet
+  de comparer la force relative de deux équipes entre elles. Par
+  exemple, si l'équipe A a un score α qui est plus grand que le score
+  β de l'équipe B, cela signifie que plus l'écart entre α et β est
+  grand, plus la probabilité que A gagne contre B est grande.</p>
+
+  <p>Après chaque rencontre, le classement est réévalué en prenant en
+  compte le résultat de cette rencontre. Ainsi, si vous perdez contre
+  une équipe qui est sous-évaluée, au fur et à mesure que le
+  classement de cette équipe s'améliore, l'impact de votre défaite
+  diminue.</p>
+
+  <p>C'est pour cette raison qu'il faut que chaque équipe joue un
+  minimum de rencontres pour pouvoir estimer précisément son
+  classement. Tant qu'une équipe n'a pas joué au moins 10 rencontres,
+  son classement est jugé trop incertain pour s'y fier.</p>
+
+  <h3>Pourquoi ce classement et pas un autre ?</h3>
+
+  <p>Dans l'histoire des systèmes de classement existants, on a d'un
+    côté les systèmes comme le BVS ou le classement ATP au tennis qui
+    attribuent arbitrairement un nombre de points par tournoi,
+    indépendamment du niveau des équipes participantes. En pratique,
+    les tournois rapportant le plus de points attirent les plus
+    grosses équipes, donc le niveau y est souvent plus relevé. Mais ce
+    n'est pas forcément toujours le cas. Par exemple, dans un cas
+    extrême, on pourrait avoir un tournoi S1 où beaucoup de grosses
+    équipes sont absentes, et malgré tout, le dernier de ce tournoi
+    gagnerait plus de points que le premier à un tournoi S3 organisé
+    sur un week-end où plusieurs grosses équipes auraient eu
+    l'occasion d'y participer, relevant ainsi le niveau moyen de ce
+    tournoi.</p>
+
+  <p>D"un autre côté, il existe des systèmes qui cherchent à ajuster
+  le classement de chaque équipe après chaque match. Le gagnant volant
+  des points au perdant. Le nombre de points volé est proportionnel à
+  l'écart de points entre les deux équipes qui s'affrontent. Ainsi, si
+  le favori gagne mais a bien plus de points que son adversaire
+  (indiquant une rencontre déséquilibrée), il ne volera que quelques
+  points à son adversaire. En revanche, si le gagnant a beaucoup moins
+  de points que son adversaire, il lui prendra plus de points. Ces
+  systèmes sont notamment utilisés aux échecs, avec le classement
+  ELO.</p>
+
+  <p>Bien que ce système semble plus juste, il souffre néanmoins de
+  plusieurs défauts qui ont été révélé au cours des nombreuses
+  décennies d'utilisation. Le principal défaut est que si l'une des
+  deux équipes a un niveau réel bien différent de celui indiqué par
+  son classement au moment de la rencontre, le résultat sera
+  faussé. Par exemple, si une équipe est bien plus forte que ce
+  qu'indique son classement et qu'elle gagne contre une autre équipe,
+  elle lui volera plus de points que ce qu'elle aurait volé si son
+  classement avait été juste. À l'inverse, les équipes qui gagnent
+    contre elle ne seront pas récompensée à leur juste valeur.</p>
+
+  <p>Pour pallier ces défauts, l'algorithme WHR calcule précisément le
+  classement de chaque équipe en prenant en compte tous les résultats
+  obtenus jusqu'à ce jour. Il évite ainsi les approximations faites
+  par les classements ELO mais demande plus de resources de
+  calcul. Tout de fois, il est suffisamment rapide pour pouvoir être
+  calculé en temps réel par n'importe quel ordinateur récent sur une
+  base de plusieurs milliers de joueurs qui s'affrontent des centaines
+  de fois par an.</p>
+
+</div>
