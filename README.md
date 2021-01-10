@@ -5,8 +5,8 @@ Rémi Coulom's Whole-History Rating (WHR) algorithm.
 
 ## Generate assets
 
-Use the following script to generate the results assets from a list of
-results in CSV format:
+Use the `resultats2json.sh` script to convert a list of results in CSV
+format into the expected JSON format:
 - For men results:
   `./resultats2json.sh PATH/TO/MEN_RESULTS.csv src/assets/games.json`
 - For women results:
@@ -14,11 +14,10 @@ results in CSV format:
 - For mixed results:
   `./resultats2json.sh PATH/TO/MIX_RESULTS.csv src/assets/mix_games.json`
 
-Then use the python scripts to compute the WKR according to these results:
-`python3 compute_whr.py`
+Then use the `compute_whr.py` python script to compute ratings based
+on these results: `python3 compute_whr.py`
 
-NOTE: This script requires the whole_history_rating python library:
-https://github.com/pfmonville/whole_history_rating
+NOTE: This script requires the [whole_history_rating](https://github.com/pfmonville/whole_history_rating) python library.
 
 ## Angular
 
