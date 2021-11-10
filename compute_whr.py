@@ -103,6 +103,7 @@ if __name__ == "__main__":
 
 
 # whr.probability_future_match("HELENE / MIGUEL", "ALEXANDRA / VINCENT")
-# whr.probability_future_match("FLORA / ULYSSE", "ALEXANDRA / VINCENT")
-# whr.probability_future_match("JENNIFER / JOHAN", "ALEXANDRA / VINCENT")
-# whr.probability_future_match("HELENE / MIGUEL", "JENNIFER / JOHAN")
+# elo1 = whr.ratings_for_player("HELENE / MIGUEL", current = True)[0]
+# elo2 = whr.ratings_for_player("ALEXANDRA / VINCENT", current = True)[0]
+#proba = 1 / (1 + 10 ** ((elo2 - elo1)/400))
+#print(f"win probability of HELENE / MIGUEL ({elo1}) against ALEXANDRA / VINCENT ({elo2}): {proba:.2f}")
