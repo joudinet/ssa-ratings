@@ -10,12 +10,8 @@ def days_between(d1, d2):
     return abs((d2 - d1).days)
 
 def add_game(whr, day, team1, team2, win):
-    if win == 1:
-        print("On day", day, ":", team1, "win against", team2)
-        whr.create_game(team1, team2, "B", days_between(day, first_day), 0)
-    else:
-        print("On day", day, ":", team1, "lost to", team2)
-        whr.create_game(team1, team2, "W", days_between(day, first_day), 0)
+        whr.create_game(team1, team2, "B" if win == 1 else "W",
+                        days_between(day, first_day), 0)
 
 def nb_games(games, team):
     n = 0
@@ -75,31 +71,47 @@ if __name__ == "__main__":
     whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
     with open('src/assets/games.json') as f:
         games = json.load(f)
+        print("Last men game played on", games[-1]['day'], ":",
+              games[-1]['teamA'],
+              "won against" if games[-1]['win'] else "lost to",
+              games[-1]['teamB'])
         if len(games) >= 1:
             first_day = games[0]['day']
             for game in games:
-                add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
-                save_ratings(whr, games, 'src/assets/ratings.json')
-                save_teams(whr, games, 'src/assets/teams.json')
+                add_game(whr, game['day'], game['teamA'],
+                         game['teamB'], game['win'])
+            save_ratings(whr, games, 'src/assets/ratings.json')
+            save_teams(whr, games, 'src/assets/teams.json')
     # Feminin
     whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
     with open('src/assets/fem_games.json') as f:
         games = json.load(f)
+        print("Last women game played on", games[-1]['day'], ":",
+              games[-1]['teamA'],
+              "won against" if games[-1]['win'] else "lost to",
+              games[-1]['teamB'])
         if len(games) >= 1:
             first_day = games[0]['day']
             for game in games:
-                add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
-                save_ratings(whr, games, 'src/assets/fem_ratings.json')
-                save_teams(whr, games, 'src/assets/fem_teams.json')
+                add_game(whr, game['day'], game['teamA'],
+                         game['teamB'], game['win'])
+            save_ratings(whr, games, 'src/assets/fem_ratings.json')
+            save_teams(whr, games, 'src/assets/fem_teams.json')
     # Mixte
     whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
     with open('src/assets/mix_games.json') as f:
         games = json.load(f)
-        first_day = games[0]['day']
-    for game in games:
-        add_game(whr, game['day'], game['teamA'], game['teamB'], game['win'])
-    save_ratings(whr, games, 'src/assets/mix_ratings.json')
-    save_teams(whr, games, 'src/assets/mix_teams.json')
+        print("Last mixte game played on", games[-1]['day'], ":",
+              games[-1]['teamA'],
+              "won against" if games[-1]['win'] else "lost to",
+              games[-1]['teamB'])
+        if len(games) >= 1:
+            first_day = games[0]['day']
+            for game in games:
+                add_game(whr, game['day'], game['teamA'],
+                         game['teamB'], game['win'])
+            save_ratings(whr, games, 'src/assets/mix_ratings.json')
+            save_teams(whr, games, 'src/assets/mix_teams.json')
 
 
 # whr.probability_future_match("HELENE / MIGUEL", "ALEXANDRA / VINCENT")

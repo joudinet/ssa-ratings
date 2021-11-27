@@ -30,17 +30,21 @@ table {
 }
 
 /* ranking table column size */
-.ranking thead th:nth-child(4) {
-    width: 10%;
+.ranking thead th.rank {
+    width: 3em;
+}
+.ranking thead th.score {
+    width: 3.5em;
+}
+.ranking thead th.sigma {
+    width: 3em;
+}
+.ranking thead th.matches {
+    width: 4.5em;
 }
 
-.ranking thead th:nth-child(1),
-.ranking thead th:nth-child(3) {
-    width: 15%;
-}
-
-.results thead th:nth-child(1) {
-    width: 24%;
+.results thead th.date {
+    width: 4.5em;
 }
 
 th, td {
@@ -83,14 +87,14 @@ tbody tr:nth-child(odd) {
 }
 
 table tbody tr.uncertain {
-    display: none;
+    display: table-row;
+    font-style: italic;
+    font-weight: lighter;
+    color: orange;
 }
 
-#showUnreliable:checked ~ table tbody tr.uncertain {
-	display: table-row;
-	font-style: italic;
-	font-weight: lighter;
-	color: orange;
+#hideUnreliable:checked ~ table tbody tr.uncertain {
+    display: none;
 }
 
 .win {
@@ -104,16 +108,16 @@ table tbody tr.uncertain {
 /* small size */
 @media screen and (max-width: 959px) {
     .ratings {
-	margin-left: 0;
-	margin-right: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .ratings > * {
-	margin-left: 8px;
-	margin-right: 8px;
+        margin-left: 8px;
+        margin-right: 8px;
     }
     th, td {
-    	padding: 4px;
+        padding: 4px;
     }
 }
 
@@ -121,14 +125,21 @@ table tbody tr.uncertain {
 /* xsmall size */
 @media screen and (max-width: 599px) {
     .ratings > * {
-	margin-left: 4px;
-	margin-right: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
     }
 
     .short-text {
-	display: inline;
+        display: inline;
     }
     .long-text {
-	display: none;
+        display: none;
+    }
+
+    .ranking thead th.score {
+        width: 3em;
+    }
+    .ranking thead th.matches {
+        width: 2em;
     }
 }
