@@ -93,10 +93,6 @@ table tbody tr.uncertain {
     color: orange;
 }
 
-#hideUnreliable:checked ~ table tbody tr.uncertain {
-    display: none;
-}
-
 .win {
     font-weight: bold;
 }

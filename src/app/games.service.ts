@@ -18,38 +18,38 @@ export class GamesService {
     constructor(private http: HttpClient) { }
 
     getGames() {
-	return this.http.get(this.gamesUrl);
+        return this.http.get(this.gamesUrl);
     }
 
     getRatings() {
-	return this.http.get(this.ratingsUrl);
+        return this.http.get(this.ratingsUrl);
     }
 
     getTeams() {
-	return this.http.get(this.teamsUrl);
+        return this.http.get(this.teamsUrl);
     }
 
     getFemGames() {
-	return this.http.get(this.femGamesUrl);
+        return this.http.get(this.femGamesUrl);
     }
 
     getFemRatings() {
-	return this.http.get(this.femRatingsUrl);
+        return this.http.get(this.femRatingsUrl);
     }
 
     getFemTeams() {
-	return this.http.get(this.femTeamsUrl);
+        return this.http.get(this.femTeamsUrl);
     }
 
     getMixGames() {
-	return this.http.get(this.mixGamesUrl);
+        return this.http.get(this.mixGamesUrl);
     }
 
     getMixRatings() {
-	return this.http.get(this.mixRatingsUrl);
+        return this.http.get(this.mixRatingsUrl);
     }
 
     getMixTeams() {
-	return this.http.get(this.mixTeamsUrl);
+        return this.http.get(this.mixTeamsUrl);
     }
 }

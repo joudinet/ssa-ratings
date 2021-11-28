@@ -11,7 +11,7 @@ export class RatingsComponent implements OnInit {
     games;
     ratings;
     teams;
-    hideUnreliable:boolean;
+    hideUnreliable: boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -20,19 +20,17 @@ export class RatingsComponent implements OnInit {
     ngOnInit(): void {
         this.hideUnreliable = false;
         this.route.url.subscribe(url => {
-            if (url.length > 0 && url[0].path === "f") {
+            if (url.length > 0 && url[0].path === 'f') {
                 this.teams = this.gamesService.getFemTeams();
                 this.gamesService.getFemGames().subscribe(games => {
                     this.games = Array.prototype.reverse.call(games);
                 });
-            }
-            else if (url.length > 0 && url[0].path === "x") {
+            } else if (url.length > 0 && url[0].path === 'x') {
                 this.teams = this.gamesService.getMixTeams();
                 this.gamesService.getMixGames().subscribe(games => {
                     this.games = Array.prototype.reverse.call(games);
                 });
-            }
-            else {
+            } else {
                 this.teams = this.gamesService.getTeams();
                 this.gamesService.getGames().subscribe(games => {
                     this.games = Array.prototype.reverse.call(games);
