@@ -6,6 +6,9 @@ export class ReliableRatingsPipe implements PipeTransform {
         if (!filter) {
             return allTeams;
         }
-        return allTeams.filter(team => team.results.length > 9);
+        return allTeams.filter(team => {
+            const opponents = new Set(team.results.map(res => res.versus));
+            return team.results.length > 9 && opponents.size > 7;
+        });
     }
 }
