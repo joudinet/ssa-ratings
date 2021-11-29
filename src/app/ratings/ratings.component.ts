@@ -12,6 +12,9 @@ export class RatingsComponent implements OnInit {
     ratings;
     teams;
     hideUnreliable: boolean;
+    teamA;
+    teamB;
+    winProba;
 
     constructor(
         private route: ActivatedRoute,
@@ -37,5 +40,23 @@ export class RatingsComponent implements OnInit {
                 });
             }
         });
+    }
+
+    onChangeTeamA(team) {
+        this.teamA = team;
+        this.computeProba();
+    }
+    onChangeTeamB(team) {
+        this.teamB = team;
+        this.computeProba();
+    }
+    computeProba() {
+        if (this.teamA && this.teamA.ratings &&
+            this.teamB && this.teamB.ratings) {
+            const scoreA = this.teamA.ratings[this.teamA.ratings.length - 1][1];
+            const scoreB = this.teamB.ratings[this.teamB.ratings.length - 1][1];
+            this.winProba =
+                Math.round(100 / (1 + Math.pow(10, (scoreB - scoreA) / 400)));
+        }
     }
 }

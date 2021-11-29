@@ -1,3 +1,7 @@
+.proba {
+    text-align: center;
+}
+
 .ratings {
     display: flex;
     flex-wrap: wrap;

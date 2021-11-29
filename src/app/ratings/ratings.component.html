@@ -1,3 +1,19 @@
+<h2>Simulation</h2>
+<p class="proba">Probabilité que
+  <select [ngModel]="teamA" (ngModelChange)="onChangeTeamA($event)"
+          name="teamA">
+    <option *ngFor="let team of teams | async" [ngValue]="team">
+      {{team.name | uppercase}}
+    </option>
+  </select>
+  gagne contre
+  <select [ngModel]="teamB" (ngModelChange)="onChangeTeamB($event)">
+    <option *ngFor="let team of teams | async" [ngValue]="team">
+      {{team.name | uppercase}}
+    </option>
+  </select> :
+  {{winProba}}%
+</p>
 <section class="ratings">
   <div class="ranking">
     <h2>Classement</h2>
