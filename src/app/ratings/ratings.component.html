@@ -30,9 +30,9 @@
             <span class="short-text">SCO</span>
             <span class="long-text">Score</span>
           </th>
-          <th class="sigma">
-            <span class="short-text">&sigma;</span>
-            <span class="long-text">&sigma;</span>
+          <th class="ci">
+            <span class="short-text">IC&nbsp;95</span>
+            <span class="long-text">IC&nbsp;95</span>
           </th>
           <th class="matches">
             <span class="short-text">M.</span>
@@ -48,7 +48,7 @@
                  [routerLink]="['team', teamId]">{{ team.name | uppercase}}</a>
           </td>
           <td>{{ team.ratings[team.ratings.length - 1][1] }}</td>
-          <td>&plusmn;{{ team.ratings[team.ratings.length - 1][2] }}</td>
+          <td>&plusmn;{{ ci95(team.ratings[team.ratings.length - 1][2]) }}</td>
           <td>{{ team.results.length }}</td>
         </tr>
       </tbody>

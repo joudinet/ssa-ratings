@@ -44,10 +44,11 @@ export class TeamComponent implements OnInit {
                               {id: 'max', type: 'number', role: 'interval'}]
                         ].concat(this.team.ratings.map(r => {
                             const score = r[1];
-                            const sigma = r[2];
+                            const variance = r[2];
+                            const ci95 = Math.round(1.96 * Math.sqrt(variance));
                             const res = [ r[0], r[1] ];
-                            res.push(score - sigma);
-                            res.push(score + sigma);
+                            res.push(score - ci95);
+                            res.push(score + ci95);
                             return res;
                         }));
                     });
@@ -63,10 +64,11 @@ export class TeamComponent implements OnInit {
                               {id: 'max', type: 'number', role: 'interval'}]
                         ].concat(this.team.ratings.map(r => {
                             const score = r[1];
-                            const sigma = r[2];
+                            const variance = r[2];
+                            const ci95 = Math.round(1.96 * Math.sqrt(variance));
                             const res = [ r[0], r[1] ];
-                            res.push(score - sigma);
-                            res.push(score + sigma);
+                            res.push(score - ci95);
+                            res.push(score + ci95);
                             return res;
                         }));
                     });
@@ -82,10 +84,11 @@ export class TeamComponent implements OnInit {
                               {id: 'max', type: 'number', role: 'interval'}]
                         ].concat(this.team.ratings.map(r => {
                             const score = r[1];
-                            const sigma = r[2];
+                            const variance = r[2];
+                            const ci95 = Math.round(1.96 * Math.sqrt(variance));
                             const res = [ r[0], r[1] ];
-                            res.push(score - sigma);
-                            res.push(score + sigma);
+                            res.push(score - ci95);
+                            res.push(score + ci95);
                             return res;
                         }));
                     });

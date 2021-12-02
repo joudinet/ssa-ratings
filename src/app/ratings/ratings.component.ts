@@ -42,6 +42,10 @@ export class RatingsComponent implements OnInit {
         });
     }
 
+    ci95(variance) {
+        return Math.round(1.96 * Math.sqrt(variance));
+    }
+
     onChangeTeamA(team) {
         this.teamA = team;
         this.computeProba();

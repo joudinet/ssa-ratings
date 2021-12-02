@@ -40,8 +40,8 @@ table {
 .ranking thead th.score {
     width: 3.5em;
 }
-.ranking thead th.sigma {
-    width: 3em;
+.ranking thead th.ci {
+    width: 3.5em;
 }
 .ranking thead th.matches {
     width: 4.5em;
