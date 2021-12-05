@@ -24,22 +24,39 @@ export class RatingsComponent implements OnInit {
         this.hideUnreliable = false;
         this.route.url.subscribe(url => {
             if (url.length > 0 && url[0].path === 'f') {
-                this.teams = this.gamesService.getFemTeams();
+                this.gamesService.getFemTeams().subscribe(teams => {
+                    this.teams = Object.values(teams)
+                        .map(team => ({...team,
+                                       reliable: this.isReliable(team)}));
+                });
                 this.gamesService.getFemGames().subscribe(games => {
                     this.games = Array.prototype.reverse.call(games);
                 });
             } else if (url.length > 0 && url[0].path === 'x') {
-                this.teams = this.gamesService.getMixTeams();
+                this.gamesService.getMixTeams().subscribe(teams => {
+                    this.teams = Object.values(teams)
+                        .map(team => ({...team,
+                                       reliable: this.isReliable(team)}));
+                });
                 this.gamesService.getMixGames().subscribe(games => {
                     this.games = Array.prototype.reverse.call(games);
                 });
             } else {
-                this.teams = this.gamesService.getTeams();
+                this.gamesService.getTeams().subscribe(teams => {
+                    this.teams = Object.values(teams)
+                        .map(team => ({...team,
+                                       reliable: this.isReliable(team)}));
+                });
                 this.gamesService.getGames().subscribe(games => {
                     this.games = Array.prototype.reverse.call(games);
                 });
             }
         });
+    }
+
+    isReliable(team) {
+        const opponents = new Set(team.results.map(res => res.versus));
+        return team.results.length > 9 && opponents.size > 7;
     }
 
     ci95(variance) {

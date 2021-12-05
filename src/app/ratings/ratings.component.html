@@ -2,13 +2,13 @@
 <p class="proba">Probabilité que
   <select [ngModel]="teamA" (ngModelChange)="onChangeTeamA($event)"
           name="teamA">
-    <option *ngFor="let team of teams | async" [ngValue]="team">
+    <option *ngFor="let team of teams" [ngValue]="team">
       {{team.name | uppercase}}
     </option>
   </select>
   gagne contre
   <select [ngModel]="teamB" (ngModelChange)="onChangeTeamB($event)">
-    <option *ngFor="let team of teams | async" [ngValue]="team">
+    <option *ngFor="let team of teams" [ngValue]="team">
       {{team.name | uppercase}}
     </option>
   </select> :
@@ -31,8 +31,8 @@
             <span class="long-text">Score</span>
           </th>
           <th class="ci">
-            <span class="short-text">IC&nbsp;95</span>
-            <span class="long-text">IC&nbsp;95</span>
+            <span class="short-text">IC</span>
+            <span class="long-text">IC95%</span>
           </th>
           <th class="matches">
             <span class="short-text">M.</span>
@@ -41,8 +41,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let team of teams | async | reliableRatings: hideUnreliable; index as teamId"
-            [ngClass]="team.results.length > 9? 'reliable' : 'uncertain'">
+        <tr *ngFor="let team of teams | reliableRatings: hideUnreliable; index as teamId"
+            [ngClass]="team.reliable? 'reliable' : 'uncertain'">
           <td>{{ teamId + 1 }}</td>
           <td><a [title]="team.name + ' details'"
                  [routerLink]="['team', teamId]">{{ team.name | uppercase}}</a>

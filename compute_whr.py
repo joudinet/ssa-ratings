@@ -21,7 +21,7 @@ def nb_games(games, team):
     return n
 
 def save_ratings(whr, games, output_file):
-    whr.auto_iterate(time_limit = 10, precision = 10E-3)
+    whr.auto_iterate(time_limit = 60, precision = 10E-3)
     # whr.print_ordered_ratings(current = True)
     players = whr.get_ordered_ratings(current = True, compact = False)
     data = []
@@ -95,7 +95,7 @@ if __name__ == "__main__":
             for game in games:
                 add_game(whr, game['day'], game['teamA'],
                          game['teamB'], game['win'])
-            save_ratings(whr, games, 'src/assets/fem_ratings.json')
+                save_ratings(whr, games, 'src/assets/fem_ratings.json')
             save_teams(whr, games, 'src/assets/fem_teams.json')
     # Mixte
     whr = whole_history_rating.Base({'w2': 14, 'uncased': True})

@@ -41,7 +41,7 @@ table {
     width: 3.5em;
 }
 .ranking thead th.ci {
-    width: 3.5em;
+    width: 4em;
 }
 .ranking thead th.matches {
     width: 4.5em;
@@ -138,6 +138,9 @@ table tbody tr.uncertain {
 
     .ranking thead th.score {
         width: 3em;
+    }
+    .ranking thead th.ci {
+        width: 2.5em;
     }
     .ranking thead th.matches {
         width: 2em;
