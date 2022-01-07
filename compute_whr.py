@@ -9,7 +9,7 @@ def days_between(d1, d2):
     d2 = datetime.strptime(d2, "%Y-%m-%d")
     return abs((d2 - d1).days)
 
-def add_game(whr, day, team1, team2, win):
+def add_game(whr, day, team1, team2, win, first_day):
         whr.create_game(team1, team2, "B" if win == 1 else "W",
                         days_between(day, first_day), 0)
 
@@ -20,22 +20,9 @@ def nb_games(games, team):
             n += 1
     return n
 
-def save_ratings(whr, games, output_file):
-    whr.auto_iterate(time_limit = 60, precision = 10E-3)
-    # whr.print_ordered_ratings(current = True)
-    players = whr.get_ordered_ratings(current = True, compact = False)
-    data = []
-    for i in reversed(range(len(players))):
-        data.append({
-            'rank': len(players)-i,
-            'name': players[i][0].upper(),
-            'elo': round(players[i][1]),
-            'games': nb_games(games, players[i][0].upper())
-            })
-    with open(output_file, 'w') as json_file:
-        json.dump(data, json_file)
-
 def save_teams(whr, games, output_file):
+    first_day = games[0]['day']
+    whr.auto_iterate(time_limit = 60, precision = 10E-3)
     players = whr.get_ordered_ratings(current = True, compact = False)
     data = []
     for i in reversed(range(len(players))):
@@ -66,53 +53,28 @@ def save_teams(whr, games, output_file):
     with open(output_file, 'w') as json_file:
         json.dump(data, json_file)
 
+def run_whr(category, input_file, output_file):
+    whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
+    with open(input_file) as f:
+        games = json.load(f)
+        print("Last", category, "game played on", games[-1]['day'], ":",
+              games[-1]['teamA'],
+              "won against" if games[-1]['win'] else "lost to",
+              games[-1]['teamB'])
+        if len(games) >= 1:
+            first_day = games[0]['day']
+            for game in games:
+                add_game(whr, game['day'], game['teamA'],
+                         game['teamB'], game['win'], first_day)
+            save_teams(whr, games, output_file)
+
 if __name__ == "__main__":
     # Masculin
-    whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
-    with open('src/assets/games.json') as f:
-        games = json.load(f)
-        print("Last men game played on", games[-1]['day'], ":",
-              games[-1]['teamA'],
-              "won against" if games[-1]['win'] else "lost to",
-              games[-1]['teamB'])
-        if len(games) >= 1:
-            first_day = games[0]['day']
-            for game in games:
-                add_game(whr, game['day'], game['teamA'],
-                         game['teamB'], game['win'])
-            save_ratings(whr, games, 'src/assets/ratings.json')
-            save_teams(whr, games, 'src/assets/teams.json')
+    run_whr('men', 'src/assets/games.json', 'src/assets/teams.json');
     # Feminin
-    whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
-    with open('src/assets/fem_games.json') as f:
-        games = json.load(f)
-        print("Last women game played on", games[-1]['day'], ":",
-              games[-1]['teamA'],
-              "won against" if games[-1]['win'] else "lost to",
-              games[-1]['teamB'])
-        if len(games) >= 1:
-            first_day = games[0]['day']
-            for game in games:
-                add_game(whr, game['day'], game['teamA'],
-                         game['teamB'], game['win'])
-                save_ratings(whr, games, 'src/assets/fem_ratings.json')
-            save_teams(whr, games, 'src/assets/fem_teams.json')
+    run_whr('women', 'src/assets/fem_games.json', 'src/assets/fem_teams.json');
     # Mixte
-    whr = whole_history_rating.Base({'w2': 14, 'uncased': True})
-    with open('src/assets/mix_games.json') as f:
-        games = json.load(f)
-        print("Last mixte game played on", games[-1]['day'], ":",
-              games[-1]['teamA'],
-              "won against" if games[-1]['win'] else "lost to",
-              games[-1]['teamB'])
-        if len(games) >= 1:
-            first_day = games[0]['day']
-            for game in games:
-                add_game(whr, game['day'], game['teamA'],
-                         game['teamB'], game['win'])
-            save_ratings(whr, games, 'src/assets/mix_ratings.json')
-            save_teams(whr, games, 'src/assets/mix_teams.json')
-
+    run_whr('mixt', 'src/assets/mix_games.json', 'src/assets/mix_teams.json');
 
 # whr.probability_future_match("HELENE / MIGUEL", "ALEXANDRA / VINCENT")
 # elo1 = whr.ratings_for_player("HELENE / MIGUEL", current = True)[0]
