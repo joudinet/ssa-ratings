@@ -45,7 +45,8 @@
             [ngClass]="team.reliable? 'reliable' : 'uncertain'">
           <td>{{ teamId + 1 }}</td>
           <td><a [title]="team.name + ' details'"
-                 [routerLink]="['team', teamId]">{{ team.name | uppercase}}</a>
+                 [routerLink]="['team', teams.indexOf(team)]">
+              {{ team.name | uppercase}}</a>
           </td>
           <td>{{ team.ratings[team.ratings.length - 1][1] }}</td>
           <td>&plusmn;{{ ci95(team.ratings[team.ratings.length - 1][2]) }}</td>
