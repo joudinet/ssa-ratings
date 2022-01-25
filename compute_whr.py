@@ -30,7 +30,7 @@ def save_teams(whr, games, output_file):
         for hist in whr.ratings_for_player(players[i][0]):
             date = datetime.strptime(first_day, "%Y-%m-%d")
             date += timedelta(days=hist[0])
-            ratings.append([ str(date.date()), hist[1], hist[2]])
+            ratings.append([ str(date.date()), hist[1] + 1500, hist[2]])
         results = []
         for game in games:
             if game['teamA'].upper() == players[i][0].upper():
